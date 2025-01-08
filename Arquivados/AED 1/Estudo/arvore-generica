@@ -1,0 +1,63 @@
+#include <stdio.h>
+
+typedef struct arvore {
+    int info;
+    struct arvore *prim;//Filhos
+    struct arvore *prox;//Irmãos
+} Tarv;
+typedef Tarv *Parv;
+
+Parv cria(int info) {
+    Parv novo = (Parv) malloc(sizeof(Tarv));
+    novo->info = info;
+    novo->prim = novo->prox = NULL;
+    return novo;
+}
+
+Parv insere(Parv a, Parv sa) {
+    sa->prox = a->prim;
+    a->prim = sa;
+    return a;
+}
+
+void imprime(Parv a) {
+    if (a==NULL) return;
+    printf("%d",a->info);
+    imprime(a->prim);
+    imprime(a->prox);
+}
+
+Parv libera(Parv a){
+    if (a==NULL) return a;
+    libera(a->prim);
+    libera(a->prox);
+    free(a);
+    return NULL;
+}
+
+int busca(Parv a, int v) {
+    if(a==NULL) return a;
+    if(a->info==v) return 1;
+    return(busca(a->prim,v)||busca(a->prox,v));
+}
+
+int igual(Parv a, Parv b) {
+    if (a==NULL && b==NULL) return 1;
+    if (a==NULL || b==NULL) return 0;
+    if (a->info != b->info) return 0;
+    return (busca(a->prim, b->prim) && busca(a->prox, b->prox));
+}
+
+Parv copia(Parv a) {
+    Parv b;
+    if (a==NULL) return NULL;
+    b = (Parv) malloc (sizeof(Tarv));
+    b->info = a->info;
+    b->prim = copia(a->prim);
+    b->prox = copia(a->prox);
+    return b;
+}
+
+int main(void) {
+
+}
