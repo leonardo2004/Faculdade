@@ -3,8 +3,8 @@ Exercício referente ao **Judge 02** da matéria Algoritmo e Estrutura de dados 
 ---
 
 ## Enunciado:
-**Problema 2
-Pares de números
+**Problema 2 ;
+Pares de números ;
 Tempo limite: 0,01 s (C)**
 
 Dado um conjunto de números inteiros distintos S e um dado número inteiro N, você deve desenvolver um programa eficiente que determine a quantidade de pares distintos de números de S cujas somas resultam em N. Neste caso, o par de números 5+15 e 15+5 deve ser considerado o mesmo par de números.

@@ -4,8 +4,8 @@ Exercício referente ao **Judge 01** da matéria Algoritmo e Estrutura de dados 
 
 ## Enunciado:
 
-**Problema 1**
-**Roteador**
+**Problema 1 ;** 
+**Roteador ;**
 **Tempo limite: 0,5 s (C)**
 
 A empresa de telecomunicações TeleJosé deseja instalar um roteador para fornecer acesso à
