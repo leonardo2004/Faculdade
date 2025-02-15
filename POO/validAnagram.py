@@ -1,3 +1,4 @@
+#Nome: Leonardo Tomasela Leal RA:170291
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
         letras_s = {letra: s.count(letra) for letra in set(s)}
