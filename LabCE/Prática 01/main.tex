@@ -1,0 +1,114 @@
+\documentclass[a4paper,oneside,10pt]{article}
+\usepackage{wallpaper}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{circuitikz}
+\usepackage{enumitem}
+
+\setlength{\textwidth}{16cm} %
+\setlength{\textheight}{23cm} %
+\setlength{\oddsidemargin}{0cm} %
+\setlength{\evensidemargin}{0cm} %
+\setlength{\topmargin}{0cm}
+
+\CenterWallPaper{1.01}{bg.pdf}
+
+
+\begin{document}
+
+\noindent Relatório 1: Associação de resistores. \\
+Laboratório de Circuitos Elétricos - Integral\\
+Prof. Gabriel de Freitas Fernandes\\
+2026.2\\
+\\
+\textbf{EQUIPE: Leonardo Tomasela Leal}
+\\
+
+\section{Introdução}
+O objetivo deste relatório é responder as questões estabelecidas em cada experimento realizado na atividade prática 1, que envolvia a criação de dois circuitos elétricos diferentes, as perguntas estabelecidas eram:
+\begin{enumerate}
+	\item Experimento 1
+	\begin{enumerate}
+		\item Qual o valor teórico da associação de resistores?
+		\item Monte o circuito e meça o valor da associação de resistores.
+		\item Meça a corrente da malha principal e a que passa por um dos resistores de 680 $\Omega$
+		\item Meça a corrente e tensão no resistor de 100 $\Omega$.
+	\end{enumerate}
+	\item Experimento 2
+	\begin{enumerate}
+		\item Encontre a equação que descreve a associação de resistores presente na imagem.
+		\item Monte o circuito e meça a resistência da associação.
+	\end{enumerate}
+\end{enumerate}
+
+As imagens mencionadas são reproduzidas a seguir nos respectivos subtópicos.
+
+%\section{Pré-Laboratório (Caso se aplique)}
+
+%Exponha todas as etapas de pré-laboratório. Caso hajam múltiplas atividades, separe cada uma da seguinte forma:
+
+%\subsection{Atividade Pré-Lab 1(Use o nome correto)}
+
+%\subsection{Atividade Pré-Lab 2(Use o nome correto)}
+
+\section{Experimento 1}
+
+\subsection{Montagem Experimental}
+Foram utilizados 2 resistores de 680 $\Omega$, com tolerância de $\pm$5\% associados em paralelo entre si, e associados em série a outro resistor de 100 $\Omega$ com tolerância de $\pm$5\%
+
+Todos foram posicionados na protoboard nessa configuração, o terminal positivo da fonte conectado à extremidade livre da associação em paralelo dos resistores de 680 $\Omega$ e o terminal negativo foi conectado na extremidade livre do resistor de 100 $\Omega$. O terminal positivo foi configurado com uma tensão de 5 V e o negativo com uma tensão de 0 V, a fonte também foi configurada com uma corrente máxima de 10 mA.
+\begin{center}
+\begin{circuitikz}[scale=1, transform shape]
+  \draw
+% Fonte de 5V (positivo em cima, negativo no terra)
+(2.75,2) node[vcc](vcc){5V} (2.75,2)
+
+% Barramento positivo (topo)
+(2,2) -- (3.5,2)
+
+% Resistor 1 do paralelo (ramo esquerdo)
+(2,2) to[R, l=680$\Omega$] (2,0)
+
+% Resistor 2 do paralelo (ramo direito)
+(3.5,2) to[R, l=680$\Omega$] (3.5,0)
+
+% Barramento negativo do paralelo (fundo)
+(2,0) -- (3.5,0) -- (2.75,0)
+
+% Resistor de 100Ω em série descendo para o terra
+-- (2.75,-0.3) to[R, l=100$\Omega$] (2.75,-1.5)
+
+% Terminal final conectado ao terra
+-- (2.75,-1.5) node[ground]{};
+\end{circuitikz}
+\end{center}
+%\subsection{Código}
+
+\subsection{Resultados e Discussão}
+
+\begin{enumerate}[label=\alph*]
+	\item Qual o valor teórico da associação de resistores?
+	Como podemos analisar, temos 2 resistores de 680 $\Omega$ em paralelo entre si, calculando a resistência equivalente desta associação temos:
+	$$
+	\frac{1}{R_{1}}=\frac{1}{680 \Omega} + \frac{1}{680 \Omega} = \frac{2}{680\Omega}\Rightarrow R_1 = \frac{680\Omega}{2} = \underline{340\Omega}
+	$$
+	\item Monte o circuito e meça o valor da associação de resistores.
+	\item Meça a corrente da malha principal e a que passa por um dos resistores de 680 $\Omega$
+	\item Meça a corrente e tensão no resistor de 100 $\Omega$.
+\end{enumerate}
+
+\section{Dificuldades Encontradas (Caso se aplique)}
+
+Esta seção deve ser usada para indicar possíveis melhorias no que foi feito devido à possíveis dificuldades encontradas durante a execução da prática.
+
+\section{Anexos(Caso se aplique)}
+
+Caso o relatório deva ser acompanhado de outros arquivos (que serão também enviados via Moodle) indique aqui uma lista destes. Por ex:
+
+\begin{itemize}
+    \item Arquivo .c contendo determinado código.
+    \item Documentação de algum componente
+    \item etc
+\end{itemize}
+
+\end{document}
