@@ -27,7 +27,8 @@ Prof. Gabriel de Freitas Fernandes\\
 \\
 
 \section{Introdução}
-O objetivo deste relatório é responder as questões estabelecidas em cada experimento realizado na atividade prática 1, que envolvia a criação de dois circuitos elétricos diferentes, as perguntas estabelecidas eram:
+
+O objetivo deste relatório é responder as questões estabelecidas em cada experimento realizado na atividade prática 1, que envolvia a criação de três circuitos elétricos diferentes, as perguntas estabelecidas eram:
 \begin{enumerate}
 	\item Experimento 1
 	\begin{enumerate}
@@ -41,6 +42,11 @@ O objetivo deste relatório é responder as questões estabelecidas em cada expe
 		\item Encontre a equação que descreve a associação de resistores presente na imagem.
 		\item Monte o circuito e meça a resistência da associação.
 	\end{enumerate}
+	\item Experimento 3
+	\begin{enumerate}
+		\item Calcule o valor ideal para o resistor R e monte o circuito. Qual valor real foi escolhido? Maior ou menor do que o ideal?
+		\item Construa o circuito com um potenciômetro. Qual foi o efeito da variação da resistência?
+	\end{enumerate}
 \end{enumerate}
 
 As imagens mencionadas são reproduzidas a seguir nos respectivos subtópicos.
@@ -51,11 +57,12 @@ As imagens mencionadas são reproduzidas a seguir nos respectivos subtópicos.
 
 %\subsection{Atividade Pré-Lab 1(Use o nome correto)}
 
-%\subsection{Atividade Pré-Lab 2(Use o nome correto)}
+%\subsection{Atividade Pré-Lab 2(Use o nome correto)}circuitikz
 
 \section{Experimento 1}
 
 \subsection{Montagem Experimental}
+
 Foram utilizados 2 resistores de 680 $\Omega$, com tolerância de $\pm$5\% associados em paralelo entre si, e associados em série a outro resistor de 100 $\Omega$ com tolerância de $\pm$5\%
 
 Todos foram posicionados na protoboard nessa configuração, o terminal positivo da fonte de tensão conectado à extremidade livre da associação em paralelo dos resistores de 680 $\Omega$ e o terminal negativo foi conectado na extremidade livre do resistor de 100 $\Omega$. O terminal positivo foi configurado com uma tensão contínua de 5 V e o negativo com uma tensão de 0 V, a fonte também foi configurada com uma corrente máxima de 10 mA.
@@ -86,11 +93,13 @@ Todos foram posicionados na protoboard nessa configuração, o terminal positivo
 \end{center}
 %\subsection{Código}
 
+
 \subsection{Resultados e Discussão}
+
 
 \begin{enumerate}[label=\alph*]
 	\item \textbf{Qual o valor teórico da associação de resistores?}
-	\\
+	
 	Como podemos analisar, temos 2 resistores de 680 $\Omega$ em paralelo entre si, calculando a resistência equivalente desta associação temos:
 	\begin{equation}
 		\frac{1}{R_{1}}=\frac{1}{680\ \Omega} + \frac{1}{680\ \Omega} = \frac{2}{680\ \Omega}\Rightarrow R_1 = \frac{680\ \Omega}{2} \Rightarrow R_1 = 340\ \Omega
@@ -102,122 +111,311 @@ Todos foram posicionados na protoboard nessa configuração, o terminal positivo
 	\end{equation}
 	Logo, temos que:
 	$$R_{eq} = R_1 + R_2 \Rightarrow R_{eq} = 340\ \Omega + 100\ \Omega =  \boxed{440\ \Omega}$$
-
+	
 	
 	\item \textbf{Monte o circuito e meça o valor da associação de resistores.}
-	\\
 	
-	O circuito foi montado em laborado, a medição foi feita utilizando o multímetro de bancada em modo de medição de impedância. O valor medido foi de \boxed{441\ \Omega}
+	O circuito foi montado em laborado, a medição foi feita utilizando o multímetro de bancada em modo de medição de ohmímetro. A fonte de tensão contínua não foi conectada ao circuito. O valor medido foi de \boxed{441\ \Omega}
 	
-	\item \textbf{Meça a corrente da malha principal e a que passa por um dos resistores de 680 $\Omega$}
-	O circuito foi aberto e reestruturado para garantir que o múltimetro fosse colocado em série com o resistor para medir corrente contínua, a seguir fica a representação do circuito com o multímetro em modo amperímetro:
+	\item \textbf{Meça a corrente da malha principal e a que passa por um dos resistores de 680 $\Omega$.}
 	
-	\begin{center}
-		\begin{circuitikz}[scale=0.9, transform shape]
-			\draw
-			% Fonte de 5V (positivo em cima, negativo no terra)
-			(2.75,3.5) node[vcc](vcc){5V} (2.75,3.5)
-			
-			% Barramento positivo (topo)
-			(2,3.5) -- (3.5,3.5)
-			
-			% Resistor 1 do paralelo (ramo esquerdo)
-			(2,3.5) to[R, l=680$\Omega$] (2,0)
-			
-	
-			% Resistor 2 do paralelo (ramo direito)
-			
-			(3.5,3.5) to[ammeter] (3.5,1.75)
-			(3.5,1.75) to[R, l=680$\Omega$] (3.5,0)
-			
-			% Barramento negativo do paralelo (fundo)
-			(2,0) -- (3.5,0) -- (2.75,0)
-			
-			% Resistor de 100Ω em série descendo para o terra
-			-- (2.75,-0.3) to[R, l=100$\Omega$] (2.75,-1.5)
-			
-			% Terminal final conectado ao terra
-			-- (2.75,-1.5) node[ground]{};
-		\end{circuitikz}
-	\end{center}
-	
+	\begin{enumerate}
+		
+		
+		\item \textbf{Corrente que passa pela malha principal:}
+		
+		O circuito foi aberto e reestruturado para garantir que o múltimetro fosse colocado em série com a malha principal para medir corrente contínua, a seguir fica a representação do circuito com o multímetro em modo amperímetro:
+		
+		\begin{center}
+			\begin{circuitikz}[scale=0.9, transform shape]
+				\draw
+				% Fonte de 5V (positivo em cima, negativo no terra)
+				(2.75,3.5) node[vcc](vcc){+5V} (2.75,3.5)
+				
+				% Barramento positivo (topo)
+				(2,3.5) -- (3.5,3.5)
+				
+				% Resistor 1 do paralelo (ramo esquerdo)
+				(2,3.5) to[R, l=680$\Omega$] (2,1.75)
+				
+				
+				% Resistor 2 do paralelo (ramo direito)
+				
+				
+				(3.5,3.5) to[R, l=680$\Omega$] (3.5,1.75)
+				
+				% Barramento negativo do paralelo (fundo)
+				(2,1.75) -- (3.5,1.75) -- (2.75,1.75)
+				
+				(2.75,1.75) to[R, l=100$\Omega$] (2.75,0)
+				% Resistor de 100Ω em série descendo para o terra
+				-- (2.75,-0.3) to[ammeter] (2.75,-1.5)
+				
+				% Terminal final conectado ao terra
+				-- (2.75,-1.5) node[ground]{};
+			\end{circuitikz}
+		\end{center}
+		O valor medido pelo amperímetro foi de \boxed{12\ mA}
+		
+		\item \textbf{Corrente que passa pelo resistor de 680 $\Omega$:}
+		
+		O circuito foi aberto e reestruturado para garantir que o múltimetro fosse colocado em série com o resistor para medir corrente contínua, a seguir fica a representação do circuito com o multímetro em modo amperímetro:
+		
+		\begin{center}
+			\begin{circuitikz}[scale=0.9, transform shape]
+				\draw
+				% Fonte de 5V (positivo em cima, negativo no terra)
+				(2.75,3.5) node[vcc](vcc){5V} (2.75,3.5)
+				
+				% Barramento positivo (topo)
+				(2,3.5) -- (3.5,3.5)
+				
+				% Resistor 1 do paralelo (ramo esquerdo)
+				(2,3.5) to[R, l=680$\Omega$] (2,0)
+				
+				
+				% Resistor 2 do paralelo (ramo direito)
+				
+				(3.5,3.5) to[R, l=680$\Omega$] (3.5,1.75)
+				(3.5,1.75) to[ammeter] (3.5,0)
+				
+				% Barramento negativo do paralelo (fundo)
+				(2,0) -- (3.5,0) -- (2.75,0)
+				
+				% Resistor de 100Ω em série descendo para o terra
+				-- (2.75,-0.3) to[R, l=100$\Omega$] (2.75,-1.5)
+				
+				% Terminal final conectado ao terra
+				-- (2.75,-1.5) node[ground]{};
+			\end{circuitikz}
+		\end{center}
+		
+		O valor medido pelo amperímetro foi de \boxed{5,51\ mA}
+		
+	\end{enumerate}
 	
 	\item \textbf{Meça a corrente e tensão no resistor de 100 $\Omega$.}
 	
-	\begin{center}
-		\begin{circuitikz}[scale=0.9, transform shape]
-			\draw
-			% Fonte de 5V (positivo em cima, negativo no terra)
-			(2.75,3.5) node[vcc](vcc){5V} (2.75,3.5)
-			
-			% Barramento positivo (topo)
-			(2,3.5) -- (3.5,3.5)
-			
-			% Resistor 1 do paralelo (ramo esquerdo)
-			(2,3.5) to[R, l=680$\Omega$] (2,1.75)
-			
-			
-			% Resistor 2 do paralelo (ramo direito)
-			
-
-			(3.5,3.5) to[R, l=680$\Omega$] (3.5,1.75)
-			
-			% Barramento negativo do paralelo (fundo)
-			(2,1.75) -- (3.5,1.75) -- (2.75,1.75)
-			
-			(2.75,1.75) to[ammeter] (2.75,0)
-			% Resistor de 100Ω em série descendo para o terra
-			-- (2.75,-0.3) to[R, l=100$\Omega$] (2.75,-1.5)
-			
-			% Terminal final conectado ao terra
-			-- (2.75,-1.5) node[ground]{};
-		\end{circuitikz}
-	\end{center}
+	\begin{enumerate}
+		
+		\item \textbf{Corrente no resistor de 100 $\Omega$:}
+		
+		Para medir a corrente no resistor de 100 $\Omega$, o circuito foi aberto e foi colocado um multímetro em modo amperímetro entre o resistor de 100 $\Omega$ e os dois resistores de 680 $\Omega$, de forma que o circuito resultante fique da seguinte forma:
+		
+		
+		\begin{center}
+			\begin{circuitikz}[scale=0.9, transform shape]
+				\draw
+				% Fonte de 5V (positivo em cima, negativo no terra)
+				(2.75,3.5) node[vcc](vcc){5V} (2.75,3.5)
+				
+				% Barramento positivo (topo)
+				(2,3.5) -- (3.5,3.5)
+				
+				% Resistor 1 do paralelo (ramo esquerdo)
+				(2,3.5) to[R, l=680$\Omega$] (2,1.75)
+				
+				
+				% Resistor 2 do paralelo (ramo direito)
+				
+				
+				(3.5,3.5) to[R, l=680$\Omega$] (3.5,1.75)
+				
+				% Barramento negativo do paralelo (fundo)
+				(2,1.75) -- (3.5,1.75) -- (2.75,1.75)
+				
+				(2.75,1.75) to[ammeter] (2.75,0)
+				% Resistor de 100Ω em série descendo para o terra
+				-- (2.75,-0.3) to[R, l=100$\Omega$] (2.75,-1.5)
+				
+				% Terminal final conectado ao terra
+				-- (2.75,-1.5) node[ground]{};
+			\end{circuitikz}
+		\end{center}
+		
+		O valor medido pelo multímetro de bancada foi de \boxed{12\ mA}
+		
+		\item \textbf{Tensão no resistor de 100 $\Omega$:}
+		
+		Para medir a tensão no resistor de 100 $\Omega$, foi colocado um multímetro em modo de medidor de tensão paralelamente ao resistor de 100 $\Omega$, de forma que o circuito resultante fique da seguinte forma:
+		
+		\begin{center}
+			\begin{circuitikz}[scale=0.9, transform shape]
+				\draw
+				% Fonte de 5V (positivo em cima, negativo no terra)
+				(2.75,3.5) node[vcc](vcc){5V} 
+				
+				% Barramento positivo (topo)
+				(2,3.5) -- (3.5,3.5)
+				
+				% Resistor 1 do paralelo (ramo esquerdo)
+				(2,3.5) to[R, l=680$\Omega$] (2,1.75)
+				
+				% Resistor 2 do paralelo (ramo direito)
+				(3.5,3.5) to[R, l=680$\Omega$] (3.5,1.75)
+				
+				% Barramento negativo do paralelo (fundo)
+				(2,1.75) -- (3.5,1.75) -- (2.75,1.75)
+				
+				% Resistor de 100Ω em série descendo para o terra
+				(2.75,1.75) -- (2.75,1.5) 
+				to[R, l=100$\Omega$, *-] (2.75,0)
+				
+				% Conectar o terra
+				(2.75,0) node[ground]{}
+				
+				% ===============================================
+				% VOLTÍMETRO EM PARALELO COM O RESISTOR DE 100Ω
+				% ===============================================
+				% O voltímetro vai do nó superior (2.75,1.5) ao nó inferior (2.75,0)
+				% Mas para não sobrepor o resistor, colocamos ao lado esquerdo
+				
+				% Nó superior (antes do resistor)
+				(2.75,1.5) -- (1.75,1.5)
+				to[voltmeter, l=V] (1.75,0)
+				-- (2.75,0)  % Nó inferior (terra)
+				;
+			\end{circuitikz}
+		\end{center}
+	\end{enumerate}
 	
-	\begin{center}
-		\begin{circuitikz}[scale=0.9, transform shape]
-			\draw
-			% Fonte de 5V (positivo em cima, negativo no terra)
-			(2.75,3.5) node[vcc](vcc){5V} (2.75,3.5)
-			
-			% Barramento positivo (topo)
-			(2,3.5) -- (3.5,3.5)
-			
-			% Resistor 1 do paralelo (ramo esquerdo)
-			(2,3.5) to[R, l=680$\Omega$] (2,1.75)
-			
-			
-			% Resistor 2 do paralelo (ramo direito)
-			
-			
-			(3.5,3.5) to[R, l=680$\Omega$] (3.5,1.75)
-			
-			% Barramento negativo do paralelo (fundo)
-			(2,1.75) -- (3.5,1.75) -- (2.75,1.75)
-			
-			(2.75,-0.3) to[voltmeter] (2.75,-1.5)
-			% Resistor de 100Ω em série descendo para o terra
-			-- (2.75,0.75) to[R, l=100$\Omega$] (2.75,0)
-			
-			% Terminal final conectado ao terra
-			-- (2.75,0) node[ground]{};
-		\end{circuitikz}
-	\end{center}
+	O valor medido pelo multímetro de bancada foi de \boxed{1,11\ V}
 	
 \end{enumerate}
 
-\section{Dificuldades Encontradas (Caso se aplique)}
 
-Esta seção deve ser usada para indicar possíveis melhorias no que foi feito devido à possíveis dificuldades encontradas durante a execução da prática.
+\section{Experimento 2}
 
-\section{Anexos(Caso se aplique)}
+\subsection{Montagem Experimental}
 
-Caso o relatório deva ser acompanhado de outros arquivos (que serão também enviados via Moodle) indique aqui uma lista destes. Por ex:
+Foram utilizados 3 resistores de 1 k$\Omega$ com tolerância de $\pm$5\%. Os resistores foram posicionados na protoboard, o circuito não foi conectado à fontes de tensão, o circuito resultante foi o seguinte:
 
-\begin{itemize}
-    \item Arquivo .c contendo determinado código.
-    \item Documentação de algum componente
-    \item etc
-\end{itemize}
+\begin{center}
+\begin{circuitikz}[scale=0.9, transform shape]
+	\draw
+	
+	(3,0) -- (3,-1) -- (0,-1) -- (0,0)
+	
+	to[R, l={1 k$\Omega$}] (1.5,0)
+	to[R, l={1 k$\Omega$}, *-] (3,0)
+	to[R, l={1 k$\Omega$}, *-] (4.5,0)
+	
+	(4.5,0) -- (4.5,1) -- (1.5,1) -- (1.5,0)
+	;
+\end{circuitikz}
+\end{center}
+
+\subsection{Resultados e Discussão}
+\begin{enumerate}[label=\alph*]
+	
+	\item \textbf{Encontre a equação que descreve a associação de resistores presente na imagem.}
+	
+	Os 3 resistores presentes no circuito estão em paralelo entre sí, portanto podemos chegar na seguinte equação:
+	
+	$$\frac{1}{R_{eq}} = \frac{1}{R}+\frac{1}{R}+\frac{1}{R} \Rightarrow \boxed{R_{eq} = \frac{R}{3}}$$
+	
+	\item \textbf{Monte o circuito e meça a resistência da associação.}
+	
+	Após montar o circuito, foi medida a resistência, colocando o multímetro de bancada no modo de ohmímetro, a fonte de tensão contínua não foi conectada, a ponta positiva do multímetro foi colocada no ponto A e a negativa no ponto B, da seguinte forma:
+	
+	\begin{center}
+		\begin{circuitikz}[scale=0.9, transform shape]
+			\draw
+			
+			(3,0) -- (3,-1) -- (1.5, -1) node[circ, name=A, label=above:A]{} -- (0,-1) -- (0,0) 
+			
+			to[R, l={1 k$\Omega$}] (1.5,0)
+			to[R, l={1 k$\Omega$}, *-] (3,0)
+			to[R, l={1 k$\Omega$}, *-] (4.5,0)
+			
+			(4.5,0) -- (4.5,1) -- (3, 1) node[circ, name=A, label=above:B]{} -- (1.5,1) -- (1.5,0)
+			;
+		\end{circuitikz}
+	\end{center}
+	
+	O valor medido pelo multímetro foi de \boxed{328\ \Omega}
+	
+\end{enumerate}
+
+
+\section{Experimento 3}
+
+\subsection{Montagem Experimental}
+
+O circuito a seguir foi montado. A tensão de operação do LED representado pelo diodo D1 é de 3 V e a potência do mesmo é de 30 mW.
+\begin{center}
+	
+	
+	\begin{circuitikz}[scale=0.9, transform shape]
+		\draw
+		
+		(-3,0) node[vcc](vcc){+5V} -- (-2,0)
+		to[R, l=R1] (-0.5,0)
+		-- (0.5,0)
+		to[D, l=D1] (1.5,0)
+		-- (2,0)
+		node[ground]{}
+		
+		;
+	\end{circuitikz}
+\end{center}
+\subsection{Resultados e Discussão}
+
+\begin{enumerate}[label=\alph*]
+	\item \textbf{Calcule o valor ideal para o resistor R1 e monte o circuito. Qual o valor real escolhido? Maior ou menor do que o ideal?}
+	
+	\begin{enumerate}
+		\item \textbf {Valor ideal:}
+		
+		Dado que a tensão de operação do LED é de 3 V, e o valor fornecido pela fonte de tensão é de 5 V. Calcula-se então que a queda de tensão necessária no resistor R1 é de 2 V.
+		Utilizando a lei de Watt, é possível encontrar a corrente que passa no resistor R1 e no LED:
+		$$I_{LED} = I_{R1} = \frac{30\ mW}{3\ V} \Rightarrow I_{R1} = 10\ mA$$
+		Utilizando a primeira lei de Ohm com o valor de corrente obtido, encontra-se o valor ideal de resistência:
+		$$R1 = \frac{2\ V}{10\ mA} \Rightarrow \boxed{R1 = 200\ \Omega}$$
+	
+	
+	\item \textbf{Qual valor real foi escolhido? Maior ou menor do que o ideal?}
+	
+	O valor real escolhido foi de $\boxed{330\ \Omega}$. Maior do que o valor ideal para garantir que não haja sobrecarga no diodo.
+	\end{enumerate}
+	
+	\item \textbf{Construa o circuito com um potenciômetro. Qual o efeito da variação de resistência?}
+	
+	O seguinte circuito foi construído com um potenciômetro de 10 k$\Omega$.
+
+	\begin{center}
+		
+		
+		\begin{circuitikz}[scale=0.9, transform shape]
+			\draw
+			
+			(-3,0) node[vcc](vcc){+5V} -- (-2.5,0)
+			to[pR, l=$R_p$, name=POT] (-1,0)
+			to[R, l=R1] (0.5,0)
+			-- (0.5,0)
+			to[D, l=D1] (1.5,0)
+			-- (2,0)
+			node[ground]{}
+			
+			;
+		\end{circuitikz}
+	\end{center}
+	
+	Conforme o seletor do potenciômetro é variado, há uma váriação na luminosidade do LED, com sua potência variando de forma linear com a resistência.
+	
+\end{enumerate}
+
+\section{Dificuldades Encontradas}
+
+A resistência real utilizada no experimento 3 foi muito alta, para aprimorar os testes, seria interessante utilizar uma resistência menor, mais próxima de 200 $\Omega$. Uma ótima opção seria um resistor de 220 $\Omega$, para garantir que o erro não seja um problema e que não haja sobrecarga no LED.
+%\section{Anexos(Caso se aplique)}
+
+%Caso o relatório deva ser acompanhado de outros arquivos (que serão também enviados via Moodle) indique aqui uma lista destes. Por ex:
+
+%\begin{itemize}
+%    \item Arquivo .c contendo determinado código.
+%    \item Documentação de algum componente
+%    \item etc
+%\end{itemize}
 
 \end{document}

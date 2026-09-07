@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.9.5)  7 SEP 2026 20:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.9.5)  7 SEP 2026 20:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -595,7 +595,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 21--28
 <bg.pdf, id=4, 598.235pt x 845.1575pt>
 File: bg.pdf Graphic file (type pdf)
 <use bg.pdf>
-Package pdftex.def Info: bg.pdf  used on input line 103.
+Package pdftex.def Info: bg.pdf  used on input line 107.
 (pdftex.def)             Requested size: 603.51883pt x 852.62225pt.
 
 Overfull \hbox (6.01096pt too wide) has occurred while \output is active
@@ -607,7 +607,7 @@ Overfull \hbox (6.01096pt too wide) has occurred while \output is active
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./bg.pdf>]
 File: bg.pdf Graphic file (type pdf)
 <use bg.pdf>
-Package pdftex.def Info: bg.pdf  used on input line 191.
+Package pdftex.def Info: bg.pdf  used on input line 168.
 (pdftex.def)             Requested size: 603.51883pt x 852.62225pt.
 
 Overfull \hbox (6.01096pt too wide) has occurred while \output is active
@@ -617,7 +617,7 @@ Overfull \hbox (6.01096pt too wide) has occurred while \output is active
 [2]
 File: bg.pdf Graphic file (type pdf)
 <use bg.pdf>
-Package pdftex.def Info: bg.pdf  used on input line 284.
+Package pdftex.def Info: bg.pdf  used on input line 234.
 (pdftex.def)             Requested size: 603.51883pt x 852.62225pt.
 
 Overfull \hbox (6.01096pt too wide) has occurred while \output is active
@@ -625,9 +625,14 @@ Overfull \hbox (6.01096pt too wide) has occurred while \output is active
  []
 
 [3]
+Overfull \hbox (8.20128pt too wide) in paragraph at lines 240--242
+\OT1/cmr/m/n/10 mult^^S^^Pmetro foram primeira-mente colo-cadas nos ter-mi-nais
+ vari-antes do po-tenci^ometro, o po-tenci^ometro
+ []
+
 File: bg.pdf Graphic file (type pdf)
 <use bg.pdf>
-Package pdftex.def Info: bg.pdf  used on input line 372.
+Package pdftex.def Info: bg.pdf  used on input line 292.
 (pdftex.def)             Requested size: 603.51883pt x 852.62225pt.
 
 Overfull \hbox (6.01096pt too wide) has occurred while \output is active
@@ -637,7 +642,7 @@ Overfull \hbox (6.01096pt too wide) has occurred while \output is active
 [4]
 File: bg.pdf Graphic file (type pdf)
 <use bg.pdf>
-Package pdftex.def Info: bg.pdf  used on input line 421.
+Package pdftex.def Info: bg.pdf  used on input line 335.
 (pdftex.def)             Requested size: 603.51883pt x 852.62225pt.
 
 Overfull \hbox (6.01096pt too wide) has occurred while \output is active
@@ -651,23 +656,27 @@ L3 programming layer <2026-01-19>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 33771 strings out of 469495
- 878692 string characters out of 5470099
- 1526341 words of memory out of 5000000
- 62118 multiletter control sequences out of 15000+600000
- 629693 words of font info for 47 fonts, out of 8000000 for 9000
+ 33811 strings out of 469495
+ 878614 string characters out of 5470099
+ 1531860 words of memory out of 5000000
+ 62157 multiletter control sequences out of 15000+600000
+ 630028 words of font info for 48 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
- 99i,13n,108p,479b,1262s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmmi7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/s
-hare/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on main.pdf (5 pages, 127007 bytes).
+ 99i,13n,108p,407b,1241s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </home/leotl/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk><
+/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmm
+i7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/sh
+are/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmsy7.pfb>
+Output written on main.pdf (5 pages, 158667 bytes).
 PDF statistics:
- 69 PDF objects out of 1000 (max. 8388607)
- 41 compressed objects within 1 object stream
+ 89 PDF objects out of 1000 (max. 8388607)
+ 54 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 

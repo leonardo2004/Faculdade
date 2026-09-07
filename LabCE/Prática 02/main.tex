@@ -1,0 +1,335 @@
+\documentclass[a4paper,oneside,10pt]{article}
+\usepackage{wallpaper}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{circuitikz}
+
+\usepackage{enumitem}
+\usepackage{amsmath}
+
+\setlength{\textwidth}{16cm} %
+\setlength{\textheight}{23cm} %
+\setlength{\oddsidemargin}{0cm} %
+\setlength{\evensidemargin}{0cm} %
+\setlength{\topmargin}{0cm}
+
+\CenterWallPaper{1.01}{bg.pdf}
+
+
+\begin{document}
+
+\noindent Relatório 1: Associação de resistores: Teorema de Thenenin e medição de resistência \\
+Laboratório de Circuitos Elétricos - Integral\\
+Prof. Gabriel de Freitas Fernandes\\
+2026.2\\
+\\
+\textbf{EQUIPE: Leonardo Tomasela Leal}
+\\
+
+\section{Introdução}
+
+O objetivo deste relatório é responder as questões estabelecidas em cada experimento realizado na atividade prática 2, que envolvia a criação de dois circuitos elétricos diferentes, os comandos estabelecidas eram:
+\begin{enumerate}
+	\item Experimento 1:
+	
+	Monte o circuito exibido abaixo e encontre o equivalente de Thevenin entre os terminais A e B. Monte o circuito com R1 = 5 k$\Omega$, R2 = 20 k$\Omega$ e R3 = 10 k$\Omega$
+	
+	\begin{center}
+	\begin{circuitikz}
+		\draw
+		(5, 0)node[ocirc, label=above:B] {} -- (0,0)
+		(0,2) to[battery, l=$\text{5 V}$] (0,0)
+		(0,2) to[R, l=R1] (3,2) coordinate(X)
+		to[R, l=R2] (5,2) node[ocirc, label=above:A] {}
+		(0,0) -- (2.75,0) to[R, l=R3] (2.75,2) -- (X)
+		(2.75,0) node[ground] {}
+		;
+	\end{circuitikz}
+	\end{center}
+	
+	\begin{enumerate}
+		\item Calcule e meça a tensão entre os terminais A e B (circuito aberto).
+		\item Calcule e meça a corrente entre os terminais A e B (circuito fechado).
+		\item Calcule e meça o valor de $R_{th}$.
+	\end{enumerate}
+	\item Experimento 2:
+	
+	Usando R1 e R2 como 100 $\Omega$ e R3 como qualquer valor abaixo de 1 k$\Omega$, monte o circuito Ponte de Wheatstone abaixo. Deve-se utilizar um potenciômetro de 1 k$\Omega$ e uma tensão de alimentação de 10V.
+	
+	\begin{center}
+	\begin{circuitikz}
+		% Fonte de Tensão (Bateria 10V) na esquerda
+		\draw (0,0) to[battery1, invert, l=$\text{10 V}$] (0,4);
+		
+		% Barramento Superior e Inferior
+		\draw (0,4) -- (5.5,4);
+		\draw (0,0) -- (5.5,0);
+		
+		% Ramo do Meio: R1 e R2
+		\draw (2.5,4) node[circ]{} 
+		to[R, l=$R_1$] (2.5,2) 
+		(2.5,2) -- (3,2)
+		node[ocirc,label=above:A] {} 
+		(2.5,2) to[R, l=$R_2$] (2.5,0) node[circ]{};
+		
+		
+		% Ramo da Direita: Potenciômetro (Resistor Variável) e R4
+		\draw (5.5,4) 
+		to[vR, l=Potenciômetro] (5.5,2)
+		(5.5,2) -- (6,2)
+		node[ocirc,label=above:B] {}
+		(5.5,2) to[R, l=$R_3$] (5.5,0);
+		
+	\end{circuitikz}
+	\end{center}
+	\begin{enumerate}
+		\item Obtenha experimentalmente a resistência de equilíbrio do circuito. (A resistência que torna a tensão entre os pontos A e B nula).
+		\item Compare o valor obtido experimentalmente com o valor teórico.
+		\item O que acontece caso a tensão de 10 V mude? Será necessário reprojetar a resistência de equilíbrio?
+	\end{enumerate}
+	\item Desafio:
+	
+	Faça uma sugestão de como maximizar a sensibilidade da Ponte de Wheatstone. Elabore a idéia e faça a devida validação através de uma simulação.
+	
+	
+\end{enumerate}
+
+As imagens mencionadas são reproduzidas a seguir nos respectivos subtópicos.
+
+%\section{Pré-Laboratório (Caso se aplique)}
+
+%Exponha todas as etapas de pré-laboratório. Caso hajam múltiplas atividades, separe cada uma da seguinte forma:
+
+%\subsection{Atividade Pré-Lab 1(Use o nome correto)}
+
+%\subsection{Atividade Pré-Lab 2(Use o nome correto)}circuitikz
+
+\section{Experimento 1}
+
+\subsection{Montagem Experimental}
+
+Foram utilizados apenas resistores de 10 k$\Omega$, de 5\% de tolerância no experimento. Para recriar as resistências R1 e R2 foram utilizidados, respectivamente, dois resistores de 10k$\Omega$ em paralelo e dois resistores de 10k$\Omega$ em série. Para fim de simplicidade, o circuito originado dessa adaptação não será mostrado.
+
+
+
+\subsection{Resultados e Discussão}
+
+
+\begin{enumerate}[label=\alph*]
+\item \textbf{Calcule e meça a tensão entre os terminais A e B (circuito aberto).}
+\begin{enumerate}
+	\item \textbf{Cálculo:}
+	
+	Considerando que os terminais A e B formam um circuito aberto, encontra-se o seguinte circuito:
+	
+		\begin{center}
+		\begin{circuitikz}
+			\draw
+			(3, 0)node[ocirc, label=above:B] {} -- (0,0)
+			(0,2) to[battery, l=$\text{5 V}$] (0,0)
+			(0,2) to[R, l=R1] (3,2) coordinate(X)
+			(3,2) node[ocirc, label=above:A] {}
+			(0,0) -- (2.75,0) to[R, l=R3] (2.75,2) -- (X)
+			(2.75,0) node[ground] {}
+			;
+		\end{circuitikz}
+	\end{center}
+	O objetivo para encontrar $V_{th}$ é encontrar a tensão entre os terminais A e B. A partir disso é possivel identificar que o circuito resultante é um divisor de tensão, seguindo a seguinte propriedade:
+	$$V_{th} = 5*\frac{R3}{R1+R2} \Rightarrow V_{th} = 5 * \frac{10\ k\Omega}{15\ k\Omega} \Rightarrow \boxed{V_{th} \approx 3,33\ V}$$
+	
+	\item \textbf{Medição:}
+	
+	Para a medição, o multímetro de bancada foi configurado em modo de medidor de tensão contínua, a ponta positiva foi colocada no terminal A e a negativa no terminal B de monto a formar o seguinte circuito:
+	
+		\begin{center}
+		\begin{circuitikz}
+			\draw
+			(5.5, 0)node[ocirc, label=above:B] {} -- (0,0)
+			(0,2) to[battery, l=$\text{5 V}$] (0,0)
+			(0,2) to[R, l=R1] (2.75,2) coordinate(X)
+			to[R, l=R2] (5.5,2) node[ocirc, label=above:A] {}
+			(0,0) -- (2.75,0) to[R, l=R3] (2.75,2) -- (X)
+			(2.75,0) node[ground] {}
+			(5,2) to[voltmeter] (5,0)
+			;
+		\end{circuitikz}
+	\end{center}
+	
+	O valor medido foi de \boxed{3,31\ V}
+	
+\end{enumerate}
+
+\item \textbf{Calcule e meça a corrente entre os terminais A e B (circuito fechado).}
+\begin{enumerate}
+	\item \textbf{Cálculo:}
+	
+	O item pede para calcular a corrente entre os terminais A e B que é, por definição, a corrente de norton $I_{sc}$. Para calcular tal corrente, considera-se o circuito no qual a fonte de tensão está em curto circuito:
+	
+	\begin{center}
+		\begin{circuitikz}
+			\draw
+			(5.5, 0)node[ocirc, label=above:B] {} -- (0,0) --
+			(0,2) to[R, l=R1] (2.75,2) coordinate(X)
+			to[R, l=R2] (5.5,2) node[ocirc, label=above:A] {}
+			(0,0) -- (2.75,0) to[R, l=R3] (2.75,2) -- (X)
+			;
+		\end{circuitikz}
+	\end{center}
+	
+	Assim, calcula-se $R_{th}$: Os resistores R3 e R1 estão em paralelo entre sí, e o resistor R2 está em série com os anteriores. Calculando a resistência equivalente:
+	$$
+	R_{th} = R2 + \frac{R1*R3}{R1+R3} \Rightarrow R_{eq} \approx 23,33 k\Omega 
+	$$
+	Com $R_{th} \text{ e } V_{th}$, utiliza-se a primeira lei de Ohm para encontrar a corrente entre os terminais A e B:
+	$$
+	V_{th} = R_{th}*I_{sc} \Rightarrow 3,33\ V = 23,33\ k\Omega * I_{sc} \Rightarrow \boxed{I_{sc} \approx 0,14\ mA}
+	$$
+	
+	\item \textbf{Medição:}
+	
+	Para medir o a corrente contínua do circuito foi necessário adicionar um resistor de alta impedância em série com o amperímetro entre os terminais A e B. Caso apenas o amperímetro fosse adicionado, haveria um curto circuito que danificaria o amperímetro.
+	A resistência $R_m$ escolhida foi de 100 k$\Omega$, com tolerância de $\pm$5\%.
+	A seguir segue o circuito resultante:
+	
+	\begin{center}
+		\begin{circuitikz}
+			\draw
+			(5.5, 0)node[ocirc, label=above:B] {} -- (0,0)
+			(0,4) to[battery, l=$\text{5 V}$] (0,0)
+			(0,4) to[R, l=R1] (2.75,4) coordinate(X)
+			to[R, l=R2] (5.5,4) node[ocirc, label=above:A] {}
+			(0,0) -- (2.75,0) to[R, l=R3] (2.75,4) -- (X)
+			(2.75,0) node[ground] {}
+			(5,4) to[R, l=$\text{R}_m$]
+			(5,2) to[ammeter] (5,0)
+			;
+		\end{circuitikz}
+	\end{center}
+	
+	O valor medido foi de \boxed{0,1355\ mA.}
+	
+\end{enumerate}
+
+\item \textbf{Calcule e meça o valor de $R_{th}$}
+\begin{enumerate}
+	\item \textbf{Cálculo:}
+	
+	Os cálculos estão presentes no item b. \boxed{R_{th} \approx 23,33\ k\Omega}
+	
+	\item \textbf{Medição:}
+	
+	O multímetro foi colocado em modo de ohmímetro, a fonte de tensão foi substituída por um curto circuito para não acarretar em interferências na medida, a ponta positiva foi colocado no terminal A e a negativa foi colocada no terminal B do circuito original.
+	O valor medido foi de \boxed{25,01\ k\Omega}
+	
+	O circuito resultante é idêntico ao circuito da figura a.
+\end{enumerate}
+
+\end{enumerate}
+
+\section{Experimento 2}
+
+\subsection{Montagem Experimental}
+
+O circuito foi montado em bancada. A resistência escolhida para o experimento foi de 680 $\Omega$. Para facilitar a manipulação, foi utilizado um potenciômetro de 10 k$\Omega$ que não dependia de chave de fenda para modificar a tensão. De restante, o circuito resultante condiz com o circuito demonstrado na introdução.
+
+\subsection{Resultados e Discussão}
+
+\begin{enumerate}[label=\alph*]
+	\item \textbf{Obtenha experimentalmente a resistência de equilíbrio do circuito. (A resistência que torna a tensão entre os pontos A e B nula).}
+	
+	O item foi realizado utilizando multímetro de bancada em modo de ohmímetro. As pontas do multímetro foram primeiramente colocadas nos terminais variantes do potenciômetro, o potenciômetro foi então variádo até que tivesse a resistência de 
+	aproximadamente 690 $\Omega$. Após isso o potenciômetro foi inserido no circuito, em momento algum a fonte de tensão foi ligada, logo não foi necessário retirar a fonte de tensão. As pontas do ohmímetro foram colocadas nos terminais onde seria ligada a fonte de tensão. A resistência medida foi de aproximadamente \boxed{180 \Omega}
+	
+	\item \textbf{Compare o valor obtido experimentalmente com o valor teórico.}
+	
+	Considerando que todos os resistores eram resistores ideais, tem-se que R1 e R2 estão em série, R3 e R$_p$ estão em série e as resistências equivalentes das associações em série estão em paralelo, logo a resistência equivalente do circuito será:
+	$$R_{eq} = (\frac{1}{R1+R2} + \frac{1}{R3+R_p})^{-1} \Rightarrow \boxed{ R_{eq} \approx 174,35\ \Omega}$$
+	
+	\item \textbf{O que acontece caso a tensão de 10 V mude? Será necessário reprojetar a resistência de equilíbrio?}
+	
+	O cálculo da resistência de equilíbrio independe do valor da fonte de tensão, portanto não será necessário reprojetar a resistência de equilíbrio.
+\end{enumerate}
+
+
+\section{Desafio}
+
+Definimos a tensão de saída da ponte como:
+$$
+	V_{out} = V_s \left( \frac{R_2}{R_1 + R_2} - \frac{R_4}{R_3 + R_4} \right)
+$$
+
+A sensibilidade \(S\) é a taxa de variação da tensão de saída em relação à variação do resistor sensor \(R_4\):
+$$
+	S = \frac{\partial V_{out}}{\partial R_4} = - V_s \frac{R_3}{(R_3 + R_4)^2}
+$$
+
+Para maximizar o módulo da sensibilidade \(|S|\), devemos maximizar a função \(f(R_3, R_4) = \frac{R_3}{(R_3 + R_4)^2}\).
+
+Derivando \(f\) em relação a \(R_3\) e igualando a zero:
+$$
+	\frac{\partial f}{\partial R_3} = \frac{(R_3 + R_4)^2 - R_3 \cdot 2(R_3 + R_4)}{(R_3 + R_4)^4} \\
+	= \frac{R_4 - R_3}{(R_3 + R_4)^3} = 0
+$$
+
+Portanto, a condição para máxima sensibilidade é:
+$$
+	R_3 = R_4
+$$
+
+Aplicando a condição de equilíbrio da ponte (\(R_2 \cdot R_3 = R_1 \cdot R_4\)) com \(R_3 = R_4\), obtemos:
+$$
+	R_2 = R_1
+$$
+
+A máxima sensibilidade absoluta é alcançada quando:
+$$
+	\boxed{R_1 = R_2 \quad \text{e} \quad R_3 = R_4}
+$$
+
+Ou seja, quando todos os resistores são iguais.
+
+
+Tal resultado foi testado utilizando o software SimulIDE 2, seguem os resultados:
+\begin{enumerate}
+	\item Quando R1 = R2 = R3 = 100 $\Omega$:
+	\begin{enumerate}
+	\item $R_p = 100\ \Omega \Rightarrow V_{out} = 0\ mV$
+	\item $R_p = 120\ \Omega \Rightarrow V_{out} = 454,5\ mV$
+\end{enumerate}
+	\item Quando R1 = R2 = 100 $\Omega$ e R3 = 500 $\Omega$:
+		\begin{enumerate}
+	\item $R_p = 500\ \Omega \Rightarrow V_{out} = 0\ mV$
+	\item $R_p = 520\ \Omega \Rightarrow V_{out} = 98,04\ mV$
+\end{enumerate}
+	\item Quando R2 = R3 = 100 $\Omega$ e R1 = 500 $\Omega$:
+		\begin{enumerate}
+	\item $R_p = 500\ \Omega \Rightarrow V_{out} = 0\ mV$
+	\item $R_p = 520\ \Omega \Rightarrow V_{out} = 53,76\ mV$
+\end{enumerate}
+	\item Quando R1 = 500 $\Omega$, R2 = 250 $\Omega$ e R3 = 50 $\Omega$:
+		\begin{enumerate}
+	\item $R_p = 100\ \Omega \Rightarrow V_{out} = 0\ mV$
+	\item $R_p = 120\ \Omega \Rightarrow V_{out} = 392,1\ mV$
+\end{enumerate}
+\end{enumerate}
+
+
+
+
+\section{Dificuldades Encontradas}
+
+A maior dificuldade encontrada foi calibrar o potenciômetro para 680 $\Omega$ no experimento 2. É consideravelmente complicado ter a presição necessária considerando o atraso no multímetro.
+
+O desafio também proporcionou algumas dificuldades, em geral, a revisão da teoria de pontes de Wheatstone, junto com a justificativa matemática foi algo que levou certo tempo. Ademais, a confeccção da simulação foi algo novo para mim.
+
+\section{Anexos}
+
+%Caso o relatório deva ser acompanhado de outros arquivos (que serão também enviados via Moodle) indique aqui uma lista destes. Por ex:
+
+\begin{itemize}
+    \item Simulação da ponte de Wheatstone.
+%    \item Documentação de algum componente
+%    \item etc
+\end{itemize}
+
+\end{document}
