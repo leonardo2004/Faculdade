@@ -1,0 +1,163 @@
+\documentclass[a4paper,oneside,10pt]{article}
+\usepackage{wallpaper}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{circuitikz}
+
+\usepackage{enumitem}
+\usepackage{amsmath}
+
+\setlength{\textwidth}{16cm} %
+\setlength{\textheight}{23cm} %
+\setlength{\oddsidemargin}{0cm} %
+\setlength{\evensidemargin}{0cm} %
+\setlength{\topmargin}{0cm}
+
+\CenterWallPaper{1.01}{bg.pdf}
+
+
+\begin{document}
+
+\noindent Relatório 3: Associação de capacitores e circuitos RC \\
+Laboratório de Circuitos Elétricos - Integral\\
+Prof. Gabriel de Freitas Fernandes\\
+2026.2\\
+\\
+\textbf{EQUIPE: \underline{Leonardo Tomasela Leal}}
+\\
+
+\section{Introdução}
+
+O objetivo deste relatório é responder as questões estabelecidas em cada experimento realizado na atividade prática 3, que envolvia a montagem de um circuito RC com capacitores em associação. Os comandos estabelecidos eram:
+\begin{enumerate}
+	\item Experimento 1:
+	
+	Considere, para este experimento, $C_2 = 0$ F e $C_1 = 47$ nF. Monte o circuito RC abaixo.
+	
+	\begin{center}
+	\begin{circuitikz}
+		\draw
+		(0,2) to[battery1, l=$V$] (0,0)
+		(0,2) -- (1,2) to[R, l=$1\ k$] (3,2) coordinate(X)
+		(0,0) -- (5,0) node[ground]{}
+		(X) to[C, l=$C_1$] (3,0)
+		(X) -- (5,2) coordinate(Y)
+		(Y) to[C, l=$C_2$] (5,0)
+		(5,2) -- (6,2) node[ocirc, label=right:$V_s$]{}
+		;
+	\end{circuitikz}
+	\end{center}
+	
+	\begin{enumerate}
+		\item Calcule e meça a constante de tempo do circuito.
+		\item Use o gerador de funções e alimente o circuito com uma onda quadrada. Qual a frequência desta onda que permite a observação do ciclo de carga e descarga completo do circuito?
+	\end{enumerate}
+	\item Experimento 2:
+	
+	Considerando a imagem acima, agora empregue $C_2 = 33$ nF.
+	\begin{enumerate}
+		\item Qual a capacitância equivalente? Calcule e meça.
+		\item Repita o item b do Experimento 1, porém com este novo circuito. Qual a nova constante de tempo? Calcule e meça.
+	\end{enumerate}
+\end{enumerate}
+
+As imagens mencionadas são reproduzidas a seguir nos respectivos subtópicos.
+
+\section{Nota}
+
+Houve uma divergência entre a orientação inicial recebida para a caracterização do ciclo completo de carga e descarga do capacitor e a fórmula fisicamente associada a esse fenômeno. A relação $f = \frac{1}{2\pi RC}$ corresponde à frequência de corte ($-3$ dB) do filtro RC, e não à condição de observação de um ciclo completo de carga e descarga; para esta última, seria necessário $f \le \frac{1}{10RC}$, ou, de forma equivalente, um semiperíodo de aproximadamente $t \approx 4,6\,RC$.
+
+Para fins deste relatório, conforme orientação recebida, mantém-se a fórmula $f = \frac{1}{2\pi RC}$ como referência teórica e como base para o cálculo das constantes de tempo experimentais apresentadas a seguir, ainda que o ciclo observado não corresponda, rigorosamente, a um ciclo completo de carga e descarga.
+
+Adicionalmente, houve um problema com uma ponta de prova defeituosa que causava distorções na onda quadrada gerada. Tal problema foi resolvido e os valores foram retestados.
+
+Também não houveram medições diretas de capacitância, pois não haviam equipamentos disponíveis.
+
+
+\section{Experimento 1}
+
+\subsection{Montagem Experimental}
+
+O circuito foi montado em bancada utilizando um resistor de $1$ k$\Omega$ e um capacitor equivalente $C_1 = 47$ nF em paralelo com a saída $V_s$, conforme o esquemático apresentado na Introdução, com $C_2$ desconectado ($C_2 = 0$ F). Todos os circuitos foram montados utilizando associações em paralelo de capacitores de 1 nF e 10 nF para compor os valores de capacitância necessários.
+
+\subsection{Resultados e Discussão}
+
+\begin{enumerate}[label=\alph*]
+\item \textbf{Calcule e meça a constante de tempo do circuito.}
+\begin{enumerate}
+	\item \textbf{Cálculo:}
+	
+	A constante de tempo de um circuito RC de primeira ordem é dada pelo produto entre a resistência e a capacitância:
+	$$\tau = RC \Rightarrow \tau = 1\ k\Omega \times 47\ nF \Rightarrow \boxed{\tau_{teo} \approx 47\times 10^{-6}\ s\ (47\ \mu s)}$$
+	
+	\item \textbf{Medição:}
+	
+	Não houve medição direta da constante de tempo no domínio do tempo. Conforme afirmado anteriormente, o valor experimental foi obtido a partir da frequência de onda quadrada medida no item b), aplicando-se $f = \frac{1}{2\pi RC}$:
+	$$\tau_{exp} = \frac{1}{2\pi f_{exp}} \Rightarrow \tau_{exp} = \frac{1}{2\pi \times 2086,44} \Rightarrow \boxed{\tau_{exp} \approx 76,28\ \mu s}$$
+	Comparando-se com o valor teórico, obtém-se um erro relativo de aproximadamente $-62\%$, atribuído majoritariamente às fontes de erro de medição discutidas na Nota sobre orientação e medição.
+	
+\end{enumerate}
+
+\item \textbf{Use o gerador de funções e alimente o circuito com uma onda quadrada. Qual a frequência desta onda que permite a observação do ciclo de carga e descarga completo do circuito?}
+\begin{enumerate}
+	\item \textbf{Cálculo:}
+	
+	Utilizando a relação teórica de referência entre a frequência da onda quadrada e a constante de tempo do circuito:
+	$$f = \frac{1}{2\pi RC} \Rightarrow f = \frac{1}{2\pi \times 1\ k\Omega \times 47\ nF} \Rightarrow \boxed{f_{teo} \approx 3386,27\ Hz}$$
+	
+	\item \textbf{Medição:}
+	
+	O gerador de funções foi ajustado até que a onda quadrada permitisse observar, no osciloscópio, o ciclo completo de carga e descarga do capacitor. O valor medido foi de \boxed{f_{exp} \approx 2086,44\ Hz}, correspondendo a um erro negativo de aproximadamente $10\%$ em relação ao valor teórico de referência.
+	
+\end{enumerate}
+
+\end{enumerate}
+
+\section{Experimento 2}
+
+\subsection{Montagem Experimental}
+
+O circuito foi mantido idêntico ao do Experimento 1, adicionando-se o capacitor $C_2 = 33$ nF em paralelo com $C_1$, conforme o esquemático apresentado na Introdução. Todos os circuitos foram montados utilizando associações em paralelo de capacitores de 1 nF e 10 nF para compor os valores de capacitância necessários.
+
+\subsection{Resultados e Discussão}
+
+\begin{enumerate}[label=\alph*]
+	\item \textbf{Qual a capacitância equivalente? Calcule e meça.}
+	\begin{enumerate}
+		\item \textbf{Cálculo:}
+		
+		Como $C_1$ e $C_2$ estão associados em paralelo, a capacitância equivalente é dada pela soma direta das capacitâncias:
+		$$C_{eq} = C_1 + C_2 \Rightarrow C_{eq} = 47\ nF + 33\ nF \Rightarrow \boxed{C_{eq} \approx 80\ nF}$$
+		
+		\item \textbf{Medição:}
+		
+		Não foi possível realizar a medição, pois não havia equipamento de medição de capacitância disponível no laboratório.
+		
+	\end{enumerate}
+	
+	\item \textbf{Repita o item b do Experimento 1, porém com este novo circuito. Qual a nova constante de tempo? Calcule e meça.}
+	\begin{enumerate}
+		\item \textbf{Cálculo:}
+		
+		Utilizando a capacitância equivalente obtida no item a), calcula-se a nova constante de tempo:
+		$$\tau = RC_{eq} \Rightarrow \tau = 1\ k\Omega \times 80\ nF \Rightarrow \boxed{\tau_{teo} \approx 80\times 10^{-6}\ s\ (80\ \mu s)}$$
+		
+		\item \textbf{Medição:}
+		
+		Repetindo o procedimento do Experimento 1, item b), obteve-se a frequência de onda quadrada medida: \boxed{f_{exp} \approx 1289,44\ Hz}. Conforme adotado na Nota sobre orientação e medição, calcula-se a constante de tempo experimental aplicando-se $f = \frac{1}{2\pi RC}$:
+		$$\tau_{exp} = \frac{1}{2\pi f_{exp}} \Rightarrow \tau_{exp} = \frac{1}{2\pi \times 1289,44} \Rightarrow \boxed{\tau_{exp} \approx 123,43\ \mu s}$$
+		Comparando-se com o valor teórico, obtém-se um erro relativo de aproximadamente $-54\%$, também atribuído às fontes de erro de medição discutidas na Nota sobre orientação e medição.
+		
+	\end{enumerate}
+	
+\end{enumerate}
+
+\section{Dificuldades Encontradas}
+
+A montagem do circuito utilizando apenas capacitores de 1 nF e de 10 nF provou-se demorada, para o primeiro experimento foram colocados 11 capacitores em paralelo, já para o segundo, foram colocados apenas 8. Além disso, a disparidade da orientação em sala com a literatura também provou-se uma dificuldade. Em sala, foi orientado o uso da frequência de corte para os testes, mas esta não condiz com a frequência de carga e descarga, o que explica as disparidades dos valores calculados e dos valores medidos. Por fim, o meu azar também provou-se grande, ao pegar uma ponta de prova defeituosa, o que custou algum tempo no laboratório para descobrir o problema.
+
+%\section{Anexos}
+
+%[DADO NÃO FORNECIDO]
+
+\end{document}
